@@ -1,11 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: ms3-dev-infra
+namespace: ms3-dev
 
 resources:
   - namespace.yaml
   - ../../base
+
+images:
+  - name: ghcr.io/ms3-system/api-service
+    newTag: v0.1.0
 
 labels:
   - includeSelectors: true
