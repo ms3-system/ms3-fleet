@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: ms3-prod
+
+resources:
+  - namespace.yaml
+  - ../../base
+
+configMapGenerator:
+  - name: api-service-config
+    behavior: merge
+    literals:
+      - API_SERVICE_METADATA_URL=http://metadata-service.ms3-prod.svc.cluster.local:8083
+      - API_SERVICE_DATA_URL=http://data-service.ms3-prod.svc.cluster.local:8081
+      - API_SERVICE_AUTH_URL=http://auth-service.ms3-prod.svc.cluster.local:8082
+
+labels:
+  - includeSelectors: true
+    pairs:
+      environment: prod
+      app.kubernetes.io/part-of: ms3
