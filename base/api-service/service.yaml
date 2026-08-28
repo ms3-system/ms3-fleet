@@ -2,13 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: api-service
-  labels:
-    app.kubernetes.io/name: api-service
-    app.kubernetes.io/part-of: ms3
 spec:
-  selector:
-    app.kubernetes.io/name: api-service
-    app.kubernetes.io/part-of: ms3
+  selector: {}
   ports:
     - protocol: TCP
       port: 8080

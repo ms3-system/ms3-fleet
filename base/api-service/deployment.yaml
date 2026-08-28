@@ -2,20 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-service
-  labels:
-    app.kubernetes.io/name: api-service
-    app.kubernetes.io/part-of: ms3
 spec:
   replicas: 3
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: api-service
-      app.kubernetes.io/part-of: ms3
+  selector: {}
   template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: api-service
-        app.kubernetes.io/part-of: ms3
     spec:
       containers:
         - name: api-service
