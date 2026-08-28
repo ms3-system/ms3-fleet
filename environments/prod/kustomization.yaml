@@ -15,6 +15,10 @@ configMapGenerator:
       - API_SERVICE_DATA_URL=http://data-service.ms3-prod.svc.cluster.local:8081
       - API_SERVICE_AUTH_URL=http://auth-service.ms3-prod.svc.cluster.local:8082
 
+images:
+  - name: ghcr.io/ms3-system/api-service
+    newTag: v0.1.0
+
 labels:
   - includeSelectors: true
     pairs:
