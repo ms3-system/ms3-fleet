@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: metadata-service
+  labels:
+    app.kubernetes.io/name: metadata-service
+    app.kubernetes.io/part-of: ms3
+spec:
+  serviceName: "metadata-service"
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: metadata-service
+      app.kubernetes.io/part-of: ms3
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: metadata-service
+        app.kubernetes.io/part-of: ms3
+    spec:
+      containers:
+        - name: metadata-service
+          image: ghcr.io/ms3-system/ms3/metadata-service:v0.1.0
+          ports:
+            - containerPort: 8083
+
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
+
+          envFrom:
+            - configMapRef:
+                name: metadata-service-config
+          volumeMounts:
+            - name: metadata-service-vol
+              mountPath: /app/data
+
+          startupProbe:
+            httpGet:
+              path: /healthz/startup
+              port: 8083
+            failureThreshold: 30
+            periodSeconds: 5
+
+          livenessProbe:
+            httpGet:
+              path: /healthz/live
+              port: 8083
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /healthz/ready
+              port: 8083
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+  volumeClaimTemplates:
+    - metadata:
+        name: metadata-service-vol
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
