@@ -1,0 +1,23 @@
+area:
+  - infra
+  - kustomize
+  - gitops
+  - documentation
+
+kind:
+  - bug
+  - enhancement
+  - help wanted
+  - good first issue
+  - duplicate
+  - question
+  - wontfix
+  - accessibility
+  - invalid
+
+priority:
+  - long-term/not-important
+  - short-term/important
+  - low
+  - mid
+  - high
