@@ -22,7 +22,6 @@ jobs:
           prow-commands: |
             /assign
             /unassign
-            /approve
             /retitle
             /area
             /kind
@@ -37,6 +36,14 @@ jobs:
             /cc
             /uncc
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Handle /approve
+        if: github.event.issue.pull_request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+        run: bash .github/scripts/handle-approve.sh
 
       - name: Check merge conditions
         if: github.event.issue.pull_request
