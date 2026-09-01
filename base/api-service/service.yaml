@@ -3,7 +3,9 @@ kind: Service
 metadata:
   name: api-service
 spec:
-  selector: {}
+  selector:
+    app.kubernetes.io/name: api-service
+    app.kubernetes.io/part-of: ms3
   ports:
     - protocol: TCP
       port: 8080
