@@ -17,13 +17,13 @@ configMapGenerator:
 
 images:
   - name: ghcr.io/ms3-system/api-service
-    digest: sha256:49489f6bb64ca72b4f4735b98a294840dd79d952237eb305578d46bd31249d5d
+    digest: sha256:b003619da3f255bfedd9319f9f35fca753390413586cc6c998ced59f5147ca5e
   - name: ghcr.io/ms3-system/data-service
-    digest: sha256:787b266a01314623fe6479e1f1848a3568609b53366252405e9da9039b210de0
+    digest: sha256:11027353d236447732d8dbda9f22ab4d5d6308cff71bc1d0860c4d112b7072e2
   - name: ghcr.io/ms3-system/auth-service
-    digest: sha256:6f6b9596cc735d3e04b27cbb662d757a4ba602714b9c0cedca754ab48dfb8ef2
+    digest: sha256:4006118cad6a2eedab34e1660648e0f85f2790d5f90fb987241ee23a76d4aabe
   - name: ghcr.io/ms3-system/metadata-service
-    digest: sha256:6b7d63af4a501cfd13a73122e9ffbf7bf2e0bc403b971fa443e68a2b11bc87d7
+    digest: sha256:1093f772602108b8384a327a4bd4b548bd2a05184955b5ef3b222a6b73f66bd4
 
 labels:
   - includeSelectors: true
