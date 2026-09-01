@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: api-service
 spec:
-  replicas: 3
+  replicas: 1
   selector: {}
   template:
     spec:
@@ -22,10 +22,10 @@ spec:
               memory: 128Mi
 
           envFrom:
-              - configMapRef:
-                  name: api-service-config
-              - secretRef:
-                  name: api-service-secret
+            - configMapRef:
+                name: api-service-config
+            - secretRef:
+                name: api-service-secret
 
           startupProbe:
             httpGet:
