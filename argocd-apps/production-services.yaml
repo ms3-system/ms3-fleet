@@ -14,7 +14,6 @@ spec:
     namespace: ms3-prod
   syncPolicy:
     automated:
-      selfHeal: true
-      prune: true
+      enabled: false
     syncOptions:
       - CreateNamespace=true
