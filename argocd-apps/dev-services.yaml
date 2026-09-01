@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ms3-api-service
+  name: ms3-dev-services
   namespace: argocd
 spec:
   project: default
