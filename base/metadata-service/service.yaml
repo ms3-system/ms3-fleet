@@ -7,9 +7,8 @@ metadata:
     app.kubernetes.io/part-of: ms3
 spec:
   selector:
-    matchLabels:
-      app.kubernetes.io/name: metadata-service
-      app.kubernetes.io/part-of: ms3
+    app.kubernetes.io/name: metadata-service
+    app.kubernetes.io/part-of: ms3
   ports:
     - protocol: TCP
       port: 8083
