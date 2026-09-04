@@ -6,6 +6,7 @@ namespace: ms3-dev
 resources:
   - namespace.yaml
   - ../../base
+  - ingress.yaml
 
 images:
   - name: ghcr.io/ms3-system/api-service

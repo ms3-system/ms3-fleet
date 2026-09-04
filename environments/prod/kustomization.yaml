@@ -6,6 +6,7 @@ namespace: ms3-prod
 resources:
   - namespace.yaml
   - ../../base
+  - ingress.yaml
 
 configMapGenerator:
   - name: api-service-config
