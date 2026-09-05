@@ -4,22 +4,23 @@ kind: Kustomization
 namespace: ms3-dev
 
 resources:
-  - namespace.yaml
-  - ../../base
-  - ingress.yaml
+- namespace.yaml
+- ../../base
+- ingress.yaml
 
 images:
-  - name: ghcr.io/ms3-system/api-service
-    digest: sha256:b003619da3f255bfedd9319f9f35fca753390413586cc6c998ced59f5147ca5e
-  - name: ghcr.io/ms3-system/data-service
-    digest: sha256:11027353d236447732d8dbda9f22ab4d5d6308cff71bc1d0860c4d112b7072e2
-  - name: ghcr.io/ms3-system/auth-service
-    digest: sha256:4006118cad6a2eedab34e1660648e0f85f2790d5f90fb987241ee23a76d4aabe
-  - name: ghcr.io/ms3-system/metadata-service
-    digest: sha256:1093f772602108b8384a327a4bd4b548bd2a05184955b5ef3b222a6b73f66bd4
+- digest: sha256:b003619da3f255bfedd9319f9f35fca753390413586cc6c998ced59f5147ca5e
+  name: ghcr.io/ms3-system/api-service
+- digest: sha256:4006118cad6a2eedab34e1660648e0f85f2790d5f90fb987241ee23a76d4aabe
+  name: ghcr.io/ms3-system/auth-service
+- digest: sha256:42e8f2922f39e5482a6b13eb1c79b237804cf0092d41fa555a214cadf0aacc05
+  name: ghcr.io/ms3-system/data-service
+  newName: ghcr.io/ms3-system/data-service
+- digest: sha256:1093f772602108b8384a327a4bd4b548bd2a05184955b5ef3b222a6b73f66bd4
+  name: ghcr.io/ms3-system/metadata-service
 
 labels:
-  - includeSelectors: true
-    pairs:
-      environment: dev
-      app.kubernetes.io/part-of: ms3
+- includeSelectors: true
+  pairs:
+    app.kubernetes.io/part-of: ms3
+    environment: dev
